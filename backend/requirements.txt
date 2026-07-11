@@ -13,4 +13,4 @@ groq
 openai
 tenacity
 opencv-python-headless
-mediapipe
+mediapipe==0.10.14
