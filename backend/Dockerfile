@@ -19,5 +19,5 @@ COPY . .
 # Create directory for static clips if not exists
 RUN mkdir -p /app/static/clips
 
-# Command will be overridden by Procfile
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Command will be overridden by Procfile on Heroku, but Render uses this by default
+CMD ["bash", "start.sh"]
