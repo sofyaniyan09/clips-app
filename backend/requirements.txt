@@ -1,0 +1,16 @@
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+supabase==2.5.1
+celery==5.4.0
+redis==5.0.4
+python-multipart==0.0.9
+yt-dlp==2024.5.27
+python-dotenv==1.0.1
+pydantic==2.7.2
+pydantic-settings==2.2.1
+httpx==0.27.0
+groq
+openai
+tenacity
+opencv-python-headless
+mediapipe

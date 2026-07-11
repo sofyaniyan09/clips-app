@@ -1,0 +1,37 @@
+# Python / Backend
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+backend/static/clips/
+backend/test_*.py
+backend/fix_*.py
+backend/query_*.py
+backend/update_*.py
+backend/*.mp4
+
+# Flutter / Frontend
+clipper_app/.dart_tool/
+clipper_app/.packages
+clipper_app/.pub/
+clipper_app/build/
+clipper_app/.flutter-plugins
+clipper_app/.flutter-plugins-dependencies
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
