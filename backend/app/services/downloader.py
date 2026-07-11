@@ -17,7 +17,6 @@ class DownloaderService:
         ydl_opts = {
             'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
             'outtmpl': output_path,
-            'extractor_args': {'youtube': {'player_client': ['android', 'web']}},
             'socket_timeout': 30,
         }
         

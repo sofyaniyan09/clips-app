@@ -4,7 +4,7 @@ supabase==2.5.1
 celery==5.4.0
 redis==5.0.4
 python-multipart==0.0.9
-yt-dlp==2024.5.27
+yt-dlp==2025.10.14
 python-dotenv==1.0.1
 pydantic==2.7.2
 pydantic-settings==2.2.1
