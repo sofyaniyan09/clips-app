@@ -14,3 +14,4 @@ openai
 tenacity
 opencv-python-headless
 mediapipe==0.10.14
+imageio-ffmpeg
