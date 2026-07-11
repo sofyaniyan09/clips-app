@@ -6,6 +6,15 @@ from app.worker.tasks import process_video_task
 
 router = APIRouter()
 
+@router.get("/debug-env")
+def debug_env():
+    import os
+    key = os.environ.get("SUPABASE_SERVICE_KEY", "NOT_FOUND")
+    return {
+        "prefix": key[:20] if len(key) > 20 else key,
+        "suffix": key[-10:] if len(key) > 10 else key
+    }
+
 @router.post("/link")
 def upload_link(request: UploadLinkRequest, user = Depends(get_current_user)):
     """Ingest a video via YouTube/TikTok link."""
