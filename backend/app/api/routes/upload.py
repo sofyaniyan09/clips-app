@@ -8,11 +8,12 @@ router = APIRouter()
 
 @router.get("/debug-env")
 def debug_env():
-    import os
-    key = os.environ.get("SUPABASE_SERVICE_KEY", "NOT_FOUND")
+    from app.core.config import settings
+    key = settings.SUPABASE_SERVICE_KEY
     return {
         "prefix": key[:20] if len(key) > 20 else key,
-        "suffix": key[-10:] if len(key) > 10 else key
+        "suffix": key[-10:] if len(key) > 10 else key,
+        "source": "settings"
     }
 
 @router.post("/link")
