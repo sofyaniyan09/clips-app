@@ -12,14 +12,23 @@ def upload_link(request: UploadLinkRequest, user = Depends(get_current_user)):
     url = str(request.url)
     
     # Create a job in database
+    import uuid
+    job_id = str(uuid.uuid4())
     job_data = {
+        "id": job_id,
         "user_id": user.id if hasattr(user, 'id') else user.get('id'),
         "title": "Imported via Link",
         "status": "queued",
-        "source_url": url
+        "video_url": url,
+        "progress": 0
     }
-    response = supabase_admin.table('jobs').insert(job_data).execute()
     
+    try:
+        response = supabase_admin.table('jobs').insert(job_data).execute()
+    except Exception as e:
+        print(f"DB Insert Error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+        
     if not response.data:
         raise HTTPException(status_code=500, detail="Failed to create job")
         
@@ -57,13 +66,21 @@ async def upload_file(file: UploadFile = File(...), user = Depends(get_current_u
         raise HTTPException(status_code=500, detail=f"Failed to save file: {e}")
         
     # Create a job in database
+    job_id = str(uuid.uuid4())
     job_data = {
+        "id": job_id,
         "user_id": user.id if hasattr(user, 'id') else user.get('id'),
         "title": file.filename,
         "status": "queued",
-        "source_url": "local_upload"
+        "video_url": "local_upload",
+        "progress": 0
     }
-    response = supabase_admin.table('jobs').insert(job_data).execute()
+    
+    try:
+        response = supabase_admin.table('jobs').insert(job_data).execute()
+    except Exception as e:
+        print(f"DB Insert Error: {e}")
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
     
     if not response.data:
         raise HTTPException(status_code=500, detail="Failed to create job")
