@@ -19,7 +19,7 @@ def upload_link(request: UploadLinkRequest, user = Depends(get_current_user)):
         "user_id": user.id if hasattr(user, 'id') else user.get('id'),
         "title": "Imported via Link",
         "status": "queued",
-        "video_url": url,
+        "source_url": url,
         "progress": 0
     }
     
@@ -72,7 +72,7 @@ async def upload_file(file: UploadFile = File(...), user = Depends(get_current_u
         "user_id": user.id if hasattr(user, 'id') else user.get('id'),
         "title": file.filename,
         "status": "queued",
-        "video_url": "local_upload",
+        "source_url": "local_upload",
         "progress": 0
     }
     
